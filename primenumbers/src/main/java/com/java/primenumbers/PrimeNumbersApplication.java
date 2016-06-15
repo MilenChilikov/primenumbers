@@ -12,21 +12,12 @@ public class PrimeNumbersApplication extends Application<PrimeNumbersConfigurati
         new PrimeNumbersApplication().run(args);
     }
 
-
     @Override
-    public String getName() {
-        return "Prime Numbers";
-    }
-
-    @Override
-    public void initialize(final Bootstrap<PrimeNumbersConfiguration> bootstrap) {
-    	//bootstrap.setName("dropwizard-example-guice");
-    }
+    public void initialize(final Bootstrap<PrimeNumbersConfiguration> bootstrap) {}
 
     @Override
     public void run(final PrimeNumbersConfiguration configuration,
                     final Environment environment) {
-//    	/configuration.setName("Hi");
     	environment.jersey().register(new PrimeNumbers());
     }
 

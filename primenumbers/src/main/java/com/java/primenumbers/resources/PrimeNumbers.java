@@ -22,21 +22,22 @@ public class PrimeNumbers {
     	if(algorithm == 0) {
     		return "No algorithm parameter found";
     	}
+
     	if(algorithm != 1 && algorithm != 2) {
     		return "Wrong algorithm parameter. Please choose 1 or 2";
     	}
 
     	if(algorithm == 1) {
-    		results = algorithmOne(2, limit);
+    		results = firstAlgorithm(2, limit);
     	} else if(algorithm == 2) {
-    		results = algorithmTwo(limit);
+    		results = secondAlgorithm(2, limit);
     	}
 
     	return "Prime numbers from 1 to " + limit + " are: " + results;
     }
 
     // distribute the work to 4 threads
-    private List algorithmOne(int from, int to) {
+    private List firstAlgorithm(int from, int to) {
     	List results = new ArrayList<Integer>();
     	int firstLimit = to/4;
     	int secondLimit = 2*firstLimit; // can be used to/2
@@ -65,11 +66,10 @@ public class PrimeNumbers {
     	return results;
     }
 
-    private List algorithmTwo(int to) {
+    private List secondAlgorithm(int from, int to) {
     	List results = new ArrayList();
-    	int from = 2;
 
-    	for(int i=2; i<=to; i++) {
+    	for(int i=from; i<=to; i++) {
     		if(CheckPrime.isPrime(i)) {
     			results.add(i);
     		}

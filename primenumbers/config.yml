@@ -1,5 +1,3 @@
-## YAML Template.
-
 server:
   applicationConnectors:
   - type: http 

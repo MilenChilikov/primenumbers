@@ -7,6 +7,7 @@ import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.java.primenumbers.resources.CheckPrime;
 import com.java.primenumbers.resources.PrimeNumbers;
 
 public class PrimeNumbersTest {
@@ -16,6 +17,26 @@ public class PrimeNumbersTest {
 	@Before
     public void setup() {
 		primeNumbersResource = new PrimeNumbers();
+	}
+
+	@Test
+	public void testIsPrimeWithPrimeNumbers() {
+		System.out.println("testIsPrimeWithRightNumbers: Invoke isPrime() and expect the number to be prime");
+		Integer[] primeNumbers = { 11, 37, 97, 311, 701 };
+
+		for(int i = 0; i < primeNumbers.length; i++) {
+			assertTrue(CheckPrime.isPrime(primeNumbers[i]));
+		}
+	}
+
+	@Test
+	public void testIsPrimeWithNonPrimeNumbers() {
+		System.out.println("testIsPrimeWithNonPrimeNumbers: Invoke isPrime() and expect the number to not be prime");
+		Integer[] nonPrimeNumbers = { 12, 35, 100, 285, 711 };
+
+		for(int i = 0; i < nonPrimeNumbers.length; i++) {
+			assertFalse(CheckPrime.isPrime(nonPrimeNumbers[i]));
+		}
 	}
 
 	@Test
@@ -35,7 +56,7 @@ public class PrimeNumbersTest {
 		System.out.println("testGetPrimeNumbersShouldHandleNoLimitParam: Invoke getPrimeNumbers() with no limit param");
 		// if no limit is set in the url the default(0) value is set
 		Integer limit = 0;
-		Integer algorythm = 2;
+		Integer algorythm = 1;
 
 		String result = primeNumbersResource.getPrimeNumbers(limit, algorythm);
 		String expected = "No limit parameter found";
